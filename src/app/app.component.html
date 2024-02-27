@@ -2,10 +2,4 @@
 <button (click)="callMsg()">Clickthis</button>
 <p *ngIf="showMyMessage">{{msg}}</p>
 
-<input type="button" value="Say hello" onClick="showAndroidToast('Hello Android!')" />
-
-<script type="text/javascript">
-    function showAndroidToast(toast) {
-        Android.showToast(toast);
-    }
-</script>
+<button (click)="sendMessageToApp()">Click me for App notification</button>
