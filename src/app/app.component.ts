@@ -24,5 +24,14 @@ export class AppComponent {
       this.showMyMessage = true;
   }, 3000);
   }
+  //toast fun
+    sendMessageToApp() {
+    console.log("i was clicked")
+    if (window.postMessage) {
+      window.postMessage({ message: "Show toast notification" }, "*"); // "*" indicates all origins
+    } else {
+      alert("Your browser doesn't support message passing.");
+    }
+  }
 }
 
