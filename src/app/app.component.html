@@ -19,109 +19,56 @@
 </nav>
 
 <div class="mainDiv container-fluid">
-    <div class="bg-light mt-1 mx-2 rounded shadow h-100 p-3 justify-content-center">
-        <p class="lead">{{infoHeadingOne}}</p>
-        <p class="text-muted">{{infoDetailOne}}</p>
+    <div class="bg-light mt-1 rounded shadow h-100 p-3 justify-content-center">
+        <p class="lead text-justify">{{infoHeadingOne}}</p>
+        <p class="text-muted text-justify">{{infoDetailOne}}</p>
     </div>
-
-    <div class="bg-light mt-3 mx-2 rounded shadow h-100 p-3 justify-content-center">
-        <p class="lead mx-2">{{quickTitle}}</p>
-        <div class="quickActions d-flex align-items-center flex-row overflow-auto">
-            <div class="mx-auto p-2">
-                <span class="p-3 rounded shadow">
-                    <a>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                            class="bi bi-qr-code-scan mb-2" viewBox="0 0 16 16">
-                            <path
-                                d="M0 .5A.5.5 0 0 1 .5 0h3a.5.5 0 0 1 0 1H1v2.5a.5.5 0 0 1-1 0zm12 0a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-1 0V1h-2.5a.5.5 0 0 1-.5-.5M.5 12a.5.5 0 0 1 .5.5V15h2.5a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5v-3a.5.5 0 0 1 .5-.5m15 0a.5.5 0 0 1 .5.5v3a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1 0-1H15v-2.5a.5.5 0 0 1 .5-.5M4 4h1v1H4z" />
-                            <path d="M7 2H2v5h5zM3 3h3v3H3zm2 8H4v1h1z" />
-                            <path d="M7 9H2v5h5zm-4 1h3v3H3zm8-6h1v1h-1z" />
-                            <path
-                                d="M9 2h5v5H9zm1 1v3h3V3zM8 8v2h1v1H8v1h2v-2h1v2h1v-1h2v-1h-3V8zm2 2H9V9h1zm4 2h-1v1h-2v1h3zm-4 2v-1H8v1z" />
-                            <path d="M12 9h2V8h-2z" />
-                        </svg>
-                    </a>
-                </span>
-                <p class="text-muted mt-2">
-                    {{inames[0]}}
-                </p>
+<!-- responsive test -->
+    <div *ngIf="isDesktopLayout" class="bg-light mt-3 rounded shadow h-100 p-3 justify-content-center">
+        <div class="d-flex">
+            <p class="lead mx-2 text-justify">{{quickTitle}}</p>
+        </div>
+        <div class="d-flex align-items-center flex-row container-fluid w-100">
+            <div class="row">
+                <div *ngFor="let item of quickActionsTitle; index as i"
+                    class="iconClass mx-auto p-2 container-fluid col">
+                    <span class="mx-auto p-3 rounded shadow">
+                        <a href="/">
+                            <img src='{{"../assets/images/" + quickActionsIcons[i] + ".svg"}}' width="32" height="32">
+                        </a>
+                    </span>
+                    <p class="iconClass mt-2 text-justify">
+                        {{quickActionsTitle[i]}}
+                    </p>
+                </div>
             </div>
-            <div class="mx-auto p-2">
-                <span class="p-3 rounded shadow">
-                    <a>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                            class="bi bi-person-lines-fill mb-2" viewBox="0 0 16 16">
-                            <path
-                                d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5m.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1z" />
-                        </svg>
+        </div>
+        <button class="upiCopyBtn btn bg-primary w-auto justify-content-center" (click)="callMsg()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-copy me-2"
+                viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M4 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1v-1h1v1a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1v1z" />
+            </svg>
+            {{upiCopyBtnText}}
+        </button>
+    </div>
+<!-- responsive test -->
+    <div *ngIf="!isDesktopLayout" class="bg-light mt-3 rounded shadow h-100 p-3 justify-content-center">
+        <p class="lead mx-2 text-justify">{{quickTitle}}</p>
+        <div class="d-flex align-items-center flex-row container-fluid overflow-auto">
+            <div *ngFor="let item of quickActionsTitle; index as i" class="iconClass mx-auto w-50 p-2">
+                <span class="mx-auto mt-1 mb-3 p-3 rounded shadow">
+                    <a class="mx-auto" href="/">
+                        <img class="" src='{{"../assets/images/" + quickActionsIcons[i] + ".svg"}}' width="32"
+                            height="32">
                     </a>
                 </span>
-                <p class="text-muted mt-2">
-                    {{inames[1]}}
-                </p>
-            </div>
-            <div class="mx-auto p-2">
-                <span class="p-3 rounded shadow">
-                    <a>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                            class="bi bi-at mb-2" viewBox="0 0 16 16">
-                            <path
-                                d="M13.106 7.222c0-2.967-2.249-5.032-5.482-5.032-3.35 0-5.646 2.318-5.646 5.702 0 3.493 2.235 5.708 5.762 5.708.862 0 1.689-.123 2.304-.335v-.862c-.43.199-1.354.328-2.29.328-2.926 0-4.813-1.88-4.813-4.798 0-2.844 1.921-4.881 4.594-4.881 2.735 0 4.608 1.688 4.608 4.156 0 1.682-.554 2.769-1.416 2.769-.492 0-.772-.28-.772-.76V5.206H8.923v.834h-.11c-.266-.595-.881-.964-1.6-.964-1.4 0-2.378 1.162-2.378 2.823 0 1.737.957 2.906 2.379 2.906.8 0 1.415-.39 1.709-1.087h.11c.081.67.703 1.148 1.503 1.148 1.572 0 2.57-1.415 2.57-3.643zm-7.177.704c0-1.197.54-1.907 1.456-1.907.93 0 1.524.738 1.524 1.907S8.308 9.84 7.371 9.84c-.895 0-1.442-.725-1.442-1.914" />
-                        </svg>
-                    </a>
-                </span>
-                <p class="text-muted mt-2">
-                    {{inames[2]}}
-                </p>
-            </div>
-            <div class="mx-auto p-2">
-                <span class="p-3 rounded shadow">
-                    <a>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                            class="bi bi-journal-text mb-2" viewBox="0 0 16 16">
-                            <path
-                                d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5" />
-                            <path
-                                d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2" />
-                            <path
-                                d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z" />
-                        </svg>
-                    </a>
-                </span>
-                <p class="text-muted mt-2">
-                    {{inames[3]}}
-                </p>
-            </div>
-            <div class="mx-auto p-2">
-                <span class="p-3 rounded shadow">
-                    <a>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                            class="bi bi-credit-card-2-back-fill mb-2" viewBox="0 0 16 16">
-                            <path
-                                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5H0zm11.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM0 11v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1z" />
-                        </svg>
-                    </a>
-                </span>
-                <p class="text-muted mt-2">
-                    {{inames[4]}}
-                </p>
-            </div>
-            <div class="mx-auto p-2">
-                <span class="p-3 rounded shadow">
-                    <a>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                            class="bi bi-bank mb-2" viewBox="0 0 16 16">
-                            <path
-                                d="m8 0 6.61 3h.89a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v7a.5.5 0 0 1 .485.38l.5 2a.498.498 0 0 1-.485.62H.5a.498.498 0 0 1-.485-.62l.5-2A.5.5 0 0 1 1 13V6H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 3h.89zM3.777 3h8.447L8 1zM2 6v7h1V6zm2 0v7h2.5V6zm3.5 0v7h1V6zm2 0v7H12V6zM13 6v7h1V6zm2-1V4H1v1zm-.39 9H1.39l-.25 1h13.72z" />
-                        </svg>
-                    </a>
-                </span>
-                <p class="text-muted mt-2">
-                    {{inames[5]}}
+                <p class="iconClass mt-3 w-50 text-justify">
+                    {{quickActionsTitle[i]}}
                 </p>
             </div>
         </div>
-        <button class="upiCopyBtn btn bg-primary w-100 justify-content-center" (click)="callMsg()">
+        <button class="upiCopyBtn btn bg-primary w-auto justify-content-center" (click)="callMsg()">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-copy me-2"
                 viewBox="0 0 16 16">
                 <path fill-rule="evenodd"
@@ -131,111 +78,66 @@
         </button>
     </div>
 
-    <div class="bg-light mt-3 mx-2 rounded shadow h-100 p-3 justify-content-center">
+    <div class="bg-light mt-3 rounded shadow h-100 p-3 justify-content-center">
         <div class="d-flex align-items-center flex-row">
-            <p class="lead mx-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-wallet2"
-                    viewBox="0 0 16 16">
+            <p class="lead mx-2 text-justify">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                    class="bi bi-wallet2 mx-auto" viewBox="0 0 16 16">
                     <path
                         d="M12.136.326A1.5 1.5 0 0 1 14 1.78V3h.5A1.5 1.5 0 0 1 16 4.5v9a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 0 13.5v-9a1.5 1.5 0 0 1 1.432-1.499zM5.562 3H13V1.78a.5.5 0 0 0-.621-.484zM1.5 4a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5z" />
                 </svg>
                 {{upiLite}}
             </p>
-            <button class="upiCopyBtn btn bg-primary justify-content-center w-75 mx-2" (click)="callMsg()">
+            <a href="/" class="upiCopyBtn btn bg-primary justify-content-center w-auto mx-2 p-2 mb-3"
+                (click)="callMsg()">
                 Know More
-            </button>
+            </a>
         </div>
     </div>
-
-    <div class="bg-light mt-3 mx-2 rounded shadow h-100 p-3 justify-content-center">
-        <p class="lead mx-2">Bajaj Pay Wallet</p>
-        <div class="d-flex align-items-center flex-row overflow-auto">
-            <div class="mx-auto p-2">
-                <span class="p-3 rounded shadow">
-                    <a>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                            class="bi bi-wallet-fill mb-2" viewBox="0 0 16 16">
-                            <path
-                                d="M1.5 2A1.5 1.5 0 0 0 0 3.5v2h6a.5.5 0 0 1 .5.5c0 .253.08.644.306.958.207.288.557.542 1.194.542s.987-.254 1.194-.542C9.42 6.644 9.5 6.253 9.5 6a.5.5 0 0 1 .5-.5h6v-2A1.5 1.5 0 0 0 14.5 2z" />
-                            <path
-                                d="M16 6.5h-5.551a2.7 2.7 0 0 1-.443 1.042C9.613 8.088 8.963 8.5 8 8.5s-1.613-.412-2.006-.958A2.7 2.7 0 0 1 5.551 6.5H0v6A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5z" />
-                        </svg>
-                    </a>
-                </span>
-                <p class="text-muted mx-auto p-2">
-                    {{bpayWalletNames[0]}}
-                </p>
-            </div>
-            <div class="mx-auto p-2">
-                <span class="p-3 rounded shadow">
-                    <a>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                            class="bi bi-cash-stack mb-2" viewBox="0 0 16 16">
-                            <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4" />
-                            <path
-                                d="M0 5a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V7a2 2 0 0 1-2-2z" />
-                        </svg>
-                    </a>
-                </span>
-                <p class="text-muted mx-auto p-2">
-                    {{bpayWalletNames[1]}}
-                </p>
-            </div>
-            <div class="mx-auto p-2">
-                <span class="p-3 rounded shadow">
-                    <a>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                            class="bi bi-fast-forward-btn mb-2" viewBox="0 0 16 16">
-                            <path
-                                d="M8.79 5.093A.5.5 0 0 0 8 5.5v1.886L4.79 5.093A.5.5 0 0 0 4 5.5v5a.5.5 0 0 0 .79.407L8 8.614V10.5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z" />
-                            <path
-                                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" />
-                        </svg>
-                    </a>
-                </span>
-                <p class="text-muted mx-auto p-2">
-                    {{bpayWalletNames[2]}}
-                </p>
-            </div>
-            <div class="mx-auto p-2">
-                <span class="p-3 rounded shadow">
-                    <a>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                            class="bi bi-journal-text mb-2" viewBox="0 0 16 16">
-                            <path
-                                d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5m0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5" />
-                            <path
-                                d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2" />
-                            <path
-                                d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1z" />
-                        </svg>
-                    </a>
-                </span>
-                <p class="text-muted mx-auto p-2">
-                    {{bpayWalletNames[3]}}
-                </p>
-            </div>
-            <div class="mx-auto p-2">
-                <span class="p-3 rounded shadow">
-                    <a>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                            class="bi bi-credit-card-2-back-fill mb-2" viewBox="0 0 16 16">
-                            <path
-                                d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5H0zm11.5 1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h2a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zM0 11v1a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1z" />
-                        </svg>
-                    </a>
-                </span>
-                <p class="text-muted mx-auto p-2">
-                    {{bpayWalletNames[4]}}
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <div class="bg-light mt-3 mx-2 rounded shadow h-100 p-3 justify-content-center">
+<!-- responsive test -->
+    <div *ngIf="isDesktopLayout; else ogLayout" class="bg-light mt-3 rounded shadow h-100 p-3 justify-content-center">
         <div class="d-flex">
-            <p class="lead mx-2">Bills & Recharge</p>
-            <a class="viewAll text-primary mx-auto p-1">
+            <p class="lead mx-2 text-justify">Bajaj Pay Wallet</p>
+        </div>
+        <div class="d-flex align-items-center flex-row container-fluid w-100">
+            <div class="row">
+                <div *ngFor="let item of bpayWalletNames; index as i"
+                    class="iconClass mx-auto p-2 container-fluid col">
+                    <span class="mx-auto p-3 rounded shadow">
+                        <a href="/">
+                            <img src='{{"../assets/images/" + bpayWalletIcons[i] + ".svg"}}' width="32" height="32">
+                        </a>
+                    </span>
+                    <p class="iconClass mt-2 text-justify">
+                        {{bpayWalletNames[i]}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- responsive test -->
+    <ng-template #ogLayout>
+        <div class="bg-light mt-3 rounded shadow h-100 p-3 justify-content-center">
+        <p class="lead mx-2 text-justify">Bajaj Pay Wallet</p>
+        <div class="d-flex align-items-center flex-row container-fluid w-100 overflow-auto">
+            <div *ngFor="let item of bpayWalletNames; index as i" class="iconClass mx-auto p-2 container-fluid">
+                <span class="mx-auto mt-1 mb-3 p-3 rounded shadow">
+                    <a class="mx-auto" href="/">
+                        <img src='{{"../assets/images/" + bpayWalletIcons[i] + ".svg"}}' width="32" height="32">
+                    </a>
+                </span>
+                <p class="iconClass mt-3 w-50 text-justify">
+                    {{bpayWalletNames[i]}}
+                </p>
+            </div>
+        </div>
+        </div>
+    </ng-template>
+
+    <div class="bg-light mt-3 rounded shadow h-100 p-3 justify-content-center">
+        <div class="d-flex">
+            <p class="lead flex-lg-row mx-2 me-3 text-justify">Bills & Recharge</p>
+            <a class="viewAll align-items-right text-primary w-auto float-end mt-1">
                 View All
             </a>
         </div>
@@ -247,7 +149,7 @@
                             <img class="" src='{{"../assets/images/" + imgSrc[i] + ".svg"}}' width="32" height="32">
                         </a>
                     </span>
-                    <p class="iconClass mt-2">
+                    <p class="mt-2 text-justify">
                         {{billsBanner[i]}}
                     </p>
                 </div>
@@ -255,37 +157,42 @@
         </div>
     </div>
 
-    <div class="bg-light mt-3 mx-2 rounded shadow h-100 p-3 justify-content-center">
+    <div class="bg-light mt-3 rounded shadow h-100 p-3 justify-content-center">
         <div class="d-flex align-items-center flex-row">
-            <p class="lead mx-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-receipt mx-auto" viewBox="0 0 16 16">
-                    <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27m.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0z"/>
-                    <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5"/>
-                  </svg>
+            <p class="lead mx-2  text-justify">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                    class="bi bi-receipt mx-auto" viewBox="0 0 16 16">
+                    <path
+                        d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27m.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0z" />
+                    <path
+                        d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5" />
+                </svg>
                 My Billers
             </p>
-            <a href="/" class="upiCopyBtn btn bg-primary justify-content-center w-75 mx-2" (click)="callMsg()">
+            <a href="/" class="upiCopyBtn btn bg-primary justify-content-center w-auto mx-2 p-2 mb-3"
+                (click)="callMsg()">
                 Manage
             </a>
         </div>
-        <p class="text-muted">
+        <p class="text-muted text-justify">
             Add your bills & get notified when it's due
         </p>
     </div>
 
-    <div class="bg-light mt-3 mx-2 rounded shadow h-100 p-3 justify-content-center">
+    <div class="bg-light mt-3 rounded shadow h-100 p-3 justify-content-center">
         <div class="d-flex">
-            <p class="lead mx-2">Our Offerings</p>
+            <p class="lead mx-2 text-justify">Our Offerings</p>
         </div>
         <div class="d-flex align-items-center flex-row container-fluid w-100">
             <div class="row">
-                <div *ngFor="let item of ourOfferingsTitle; index as i" class="iconClass mx-auto p-2 container-fluid col">
+                <div *ngFor="let item of ourOfferingsTitle; index as i"
+                    class="iconClass mx-auto p-2 container-fluid col">
                     <span class="mx-auto p-3 rounded shadow">
                         <a href="/">
                             <img src='{{"../assets/images/" + ourOfferingsIcons[i] + ".svg"}}' width="32" height="32">
                         </a>
                     </span>
-                    <p class="iconClass mt-2">
+                    <p class="iconClass mt-2 text-justify">
                         {{ourOfferingsTitle[i]}}
                     </p>
                 </div>
@@ -293,40 +200,51 @@
         </div>
     </div>
 
-    <div class="bg-light mt-3 mx-2 rounded shadow h-100 p-3 justify-content-center">
+    <div class="bg-light mt-3 rounded shadow h-100 p-3 justify-content-center">
         <div class="d-flex align-items-center flex-row">
-            <p class="lead mx-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-gear" viewBox="0 0 16 16">
-                    <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0"/>
-                    <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z"/>
-                  </svg>
+            <p class="lead mx-2 text-justify">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-gear"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492M5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0" />
+                    <path
+                        d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115z" />
+                </svg>
                 Payment Settings
             </p>
-            <a href="/" class="settingsBtn justify-content-center mx-auto" (click)="callMsg()">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-arrow-right mb-3" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"/>
-                  </svg>
-            </a>
+            <div>
+                <a href="/" class="settingsBtn justify-content-center mx-auto" (click)="callMsg()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                        class="bi bi-arrow-right mb-3" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                    </svg>
+                </a>
+            </div>
         </div>
-        <p class="text-muted">
+        <p class="text-muted text-justify">
             Your payment instruments & settings
         </p>
     </div>
 
-    <div class="bg-light mt-3 mx-2 rounded shadow h-100 p-3 justify-content-center">
+    <div class="bg-light mt-3 rounded shadow h-100 p-3 justify-content-center">
         <div class="d-flex align-items-center flex-row">
-            <p class="lead mx-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-receipt mx-auto" viewBox="0 0 16 16">
-                    <path d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27m.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0z"/>
-                    <path d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5"/>
-                  </svg>
+            <p class="lead mx-2 text-justify">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                    class="bi bi-receipt mx-auto" viewBox="0 0 16 16">
+                    <path
+                        d="M1.92.506a.5.5 0 0 1 .434.14L3 1.293l.646-.647a.5.5 0 0 1 .708 0L5 1.293l.646-.647a.5.5 0 0 1 .708 0L7 1.293l.646-.647a.5.5 0 0 1 .708 0L9 1.293l.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .801.13l.5 1A.5.5 0 0 1 15 2v12a.5.5 0 0 1-.053.224l-.5 1a.5.5 0 0 1-.8.13L13 14.707l-.646.647a.5.5 0 0 1-.708 0L11 14.707l-.646.647a.5.5 0 0 1-.708 0L9 14.707l-.646.647a.5.5 0 0 1-.708 0L7 14.707l-.646.647a.5.5 0 0 1-.708 0L5 14.707l-.646.647a.5.5 0 0 1-.708 0L3 14.707l-.646.647a.5.5 0 0 1-.801-.13l-.5-1A.5.5 0 0 1 1 14V2a.5.5 0 0 1 .053-.224l.5-1a.5.5 0 0 1 .367-.27m.217 1.338L2 2.118v11.764l.137.274.51-.51a.5.5 0 0 1 .707 0l.646.647.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.646.646.646-.646a.5.5 0 0 1 .708 0l.509.509.137-.274V2.118l-.137-.274-.51.51a.5.5 0 0 1-.707 0L12 1.707l-.646.647a.5.5 0 0 1-.708 0L10 1.707l-.646.647a.5.5 0 0 1-.708 0L8 1.707l-.646.647a.5.5 0 0 1-.708 0L6 1.707l-.646.647a.5.5 0 0 1-.708 0L4 1.707l-.646.647a.5.5 0 0 1-.708 0z" />
+                    <path
+                        d="M3 4.5a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 1 1 0 1h-6a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5m8-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5m0 2a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5" />
+                </svg>
                 Refer a Merchant
             </p>
-            <a href="/" class="upiCopyBtn btn bg-primary justify-content-center w-75 mx-2" (click)="callMsg()">
+            <a href="/" class="upiCopyBtn btn bg-primary justify-content-center w-auto mx-2 p-2 mb-3"
+                (click)="callMsg()">
                 Know How
             </a>
         </div>
-        <p class="text-muted">
+        <p class="text-muted text-justify">
             Accept payment via UPI QR, Card Machine
         </p>
     </div>
